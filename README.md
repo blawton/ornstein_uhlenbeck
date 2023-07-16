@@ -3,8 +3,7 @@ A Repository for Working with and Modelling a Simple Type of Stochastic Process
 
 Ornstein Uhlenbeck Processes are in some sense the simplest nontrivial stochastic process satisfying 3 basic properties:
 
-1. Stationarity- constant distribution over time (also shown below)
-3. Gaussian Process:
+## 1. Gaussian Process:
 
 Like the Weiner Process, the Ohrenstein Uhlenbeck Process can be viewed as a gaussian process. To see this, we begin with the Weiner Process as it is defined:
 
@@ -39,7 +38,7 @@ Which means that, scaling by a factor of σ^2
 
 And if the initial distribution is also ~ N(0, σ^2/(2γ)), then X_t is stationary by what follows...
 
-3. The O-U Process is Markovian
+## 2. Markovian
 
 This third property follows from what we have established in the previous explicit solution to the SDE defining the O-U process, namely that the the O.U. process is given as 
 
@@ -57,7 +56,11 @@ Which can then be used to show that
 
 ![eq10](https://latex.codecogs.com/svg.image?\frac{Cov(X_s,X_r)Cov(X_r,X_t)}{Cov(X_r,X_r)})
 
-A neccesary and sufficient condition for a Gaussian Process to be Markovian [2]. Seeing as the O-U process, at least with these parameters, is Markovian, the fact that it is stationary corresponds with the case when X_0 is set to the stationary distribution above: N(0, σ^2/(2γ))
+A neccesary and sufficient condition for a Gaussian Process to be Markovian [2]. 
+
+## 3. Stationarity- constant distribution over time
+
+Seeing as the O-U process, at least with the parameters above, is Markovian, the fact that it is stationary corresponds with the case when X_0 is set to the stationary distribution above: N(0, σ^2/(2γ))
 
 On the computational side of things, we can see that the Euler Maruyama scheme provides sample results that converge to samples of the hypothetical O-U continuous process, which can be seen by increaing the value of the N parameter in the beginning of process.py, which controls samples/interval.
 
