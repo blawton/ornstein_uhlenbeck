@@ -8,17 +8,17 @@ Author: Ben Lawton
 import numpy as np
 import matplotlib.pyplot as plt
 
-N=500
-theta = .5
-y0 = 1
+N=400
+gamma = 2
+y0 = 2
 mu=1
-sigma = 2
+sigma = 5
 
 step= 1/N
 
 #Functions Used
 def generate(step):
-    return(np.random.normal(0, step))
+    return(np.random.normal(0, sigma*step))
 
 def dy(sigma, theta, y, step):
     return(theta*(mu-y)*step + generate(step))
@@ -29,7 +29,7 @@ array=np.zeros(N)
 array[0]=y0
 
 for i in range(1, N):
-    array[i]=array[i-1]+dy(sigma, theta, array[i-1], step)
+    array[i]=array[i-1]+dy(sigma, gamma, array[i-1], step)
     
 #Plotting results
 plt.plot(np.array(range(len(array)))/N, array, label="process")
@@ -39,7 +39,7 @@ plt.hlines(mu, color="black", xmin=plt.gca().get_xlim()[0], xmax=plt.gca().get_x
 plt.legend()
 plt.tight_layout()
 
-params = [theta, y0, mu, sigma, N]
+params = [gamma, y0, mu, sigma, N]
 plt.savefig("graphs/Process_" + "_".join([str(param) for param in params])+ "_steps.png")
 plt.show()
     
